@@ -3,21 +3,31 @@ import React from 'react';
 //we (class CartItem) will inherit from a class "Component" inside the "React" package
 
 class CartItem extends React.Component {
+    constructor(){
+        super(); //calls constructor of parent class ie;"Component" in react
+        this.state = {
+            title:'Phone',
+            price:999,
+            qty:1,
+            img_url:"https://image.flaticon.com/icons/svg/819/819826.svg"
+        }
+    }
     render () {
+        const { price,qty,img_url,title } = this.state;
         return (
             <div id="cart-item-container">
                 <div id="cart-item-img-container">
-                    <img src="https://image.flaticon.com/icons/svg/819/819826.svg" ></img>
+                    <img src={img_url} ></img>
                 </div>
                 <div id="cart-item-description-container">
                     <div id="title">
-                        <h3 style={{color:'orangered'}} >Title</h3>
+                        <h3 style={{color:'orangered'}} >{title}</h3>
                     </div>
                     <div id="price">
-                        <p>100</p>
+                        <p>{price}</p>
                     </div>
                     <div id="qty">
-                        <p>1</p>
+                        <p>{qty}</p>
                     </div>
                     <div id="item-qty-edit-buttons">
                         <img src="https://image.flaticon.com/icons/svg/864/864378.svg" style={styles.button_image} ></img>
