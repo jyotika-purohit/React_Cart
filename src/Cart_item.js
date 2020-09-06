@@ -11,7 +11,7 @@ class CartItem extends React.Component {
                 </div>
                 <div id="cart-item-description-container">
                     <div id="title">
-                        <h3>Title</h3>
+                        <h3 style={{color:'orangered'}} >Title</h3>
                     </div>
                     <div id="price">
                         <p>100</p>
@@ -20,15 +20,24 @@ class CartItem extends React.Component {
                         <p>1</p>
                     </div>
                     <div id="item-qty-edit-buttons">
-                        <img src="https://image.flaticon.com/icons/svg/864/864378.svg"></img>
-                        <img src="https://image.flaticon.com/icons/svg/864/864373.svg"></img>
-                        <img src="https://image.flaticon.com/icons/svg/1214/1214428.svg"></img>
+                        <img src="https://image.flaticon.com/icons/svg/864/864378.svg" style={styles.button_image} ></img>
+                        <img src="https://image.flaticon.com/icons/svg/864/864373.svg" style={styles.button_image}></img>
+                        <img src="https://image.flaticon.com/icons/svg/1214/1214428.svg" style={styles.button_image}></img>
                     </div>
                     
                 </div>
                 
             </div>
         )
+    }
+}
+
+
+const styles = {
+    button_image:{
+        heigth:30,
+        width:30,
+        margin:5
     }
 }
 
