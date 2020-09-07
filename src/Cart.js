@@ -5,7 +5,9 @@ class Cart extends React.Component{
 
     constructor(){
         super();
+
         this.state = {
+           
             products : [
                 {
                     id:1,
@@ -39,9 +41,53 @@ class Cart extends React.Component{
         }
     }
 
+    handleIncreaseQty = (product) => {
+        const {products} = this.state;
+        const index = products.indexOf(product);
+        products[index].qty+=1;
+        
+        this.setState({
+            products:products
+            //key value variable name is same so we can also do it like -- 
+            //products
+        });
+    }
+
+    handleDecreaseQty = (product) => {
+        const {products} = this.state;
+
+        if(product.qty==1){
+            this.handleDeleteProduct(product.id);
+            return;
+        }
+
+        if(product.qty<=0){
+            return;
+        }
+        const index = products.indexOf(product);
+        products[index].qty-=1;
+        
+        this.setState({
+            products:products
+        });
+    }
+
+    handleDeleteProduct = (id) => {
+        const {products} =this.state;
+        
+        const items =products.filter((item) => 
+            item.id !== id
+        );
+
+        this.setState({
+            products:items
+        });
+    }
+
     render () {
 
         const  {products} = this.state;
+
         // const arr = [1,2,3,4,5];
         return (
             <div className="Cart">
@@ -54,7 +100,10 @@ class Cart extends React.Component{
                     {products.map((product) => {
                         return (
                             <li className="Cart-Item" key={product.id}  >
-                                    <Cart_item product={product} />
+                                    <Cart_item product={product} 
+                                    OnIncreaseQty={this.handleIncreaseQty}
+                                    OnDecreaseQty={this.handleDecreaseQty} 
+                                    OnDelete={this.handleDeleteProduct}/>
                             </li>
                         )
                     })}

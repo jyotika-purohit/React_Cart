@@ -4,7 +4,7 @@ import React from 'react';
 
 class CartItem extends React.Component {
 
-    increaseQuantity = () => {   //arrow func binds the val of this with the instance of this class
+    // increaseQuantity = () => {   //arrow func binds the val of this with the instance of this class
         
         // setstate is async in nature and so we don't know when will it get executed.
         // so whenever we want to use setstate only when it's updated so we use : callback w it
@@ -17,14 +17,14 @@ class CartItem extends React.Component {
 
         //way 2 -- shallow merging --- use this when prev state is req and is to be changed
         // here, the setstae function is called one after the other and the prevstate is kept upto date & in this state also batching will be done and comp will be rendered just once
-        this.setState((prevState) => {
-            return {
-                qty:prevState.qty+1
-            }
-        });
-    }
+    //     this.setState((prevState) => {
+    //         return {
+    //             qty:prevState.qty+1
+    //         }
+    //     });
+    // }
 
-    decreaseQuantity = () => {   //arrow func binds the val of this with the instance of this class
+    // decreaseQuantity = () => {   //arrow func binds the val of this with the instance of this class
         
         //way 1  -- shallow merging -- used in cases in case like title
         // this.setState({
@@ -32,19 +32,19 @@ class CartItem extends React.Component {
         // });
 
         //way 2 -- shallow merging --- use this when prev state is req and is to be changed
-        this.setState((prevState) => {
+    //     this.setState((prevState) => {
 
-            if(prevState.qty == 0){
-                return {
-                    qty:prevState.qty
-                };
-            }
+    //         if(prevState.qty == 0){
+    //             return {
+    //                 qty:prevState.qty
+    //             };
+    //         }
 
-            return {
-                qty:prevState.qty-1
-            }
-        });
-    }
+    //         return {
+    //             qty:prevState.qty-1
+    //         }
+    //     });
+    // }
 
     
 
@@ -63,7 +63,9 @@ class CartItem extends React.Component {
 
     render () {
         // const { price,qty,img_url,title } = this.state;
-        const { price,qty,img_url,title } = this.props.product;
+        const { price,qty,img_url,title} = this.props.product;
+
+        const {OnIncreaseQty,OnDecreaseQty,OnDelete,product} = this.props;
 
         return (
             <div id="cart-item-container">
@@ -83,14 +85,23 @@ class CartItem extends React.Component {
                     <div id="item-qty-edit-buttons">
                         
                         <img alt="increase-btn" className="qty-increase" 
-                        onClick={this.increaseQuantity.bind(this) } 
+                        // onClick={this.increaseQuantity.bind(this) } 
+                        onClick={
+                            () => OnIncreaseQty(product)
+                        }
                         src="https://image.flaticon.com/icons/svg/864/864378.svg" style={styles.button_image} ></img>
                         
                         <img alt="decrease-btn" className="qty-decrease" 
-                        onClick={this.decreaseQuantity.bind(this) } 
+                        onClick={
+                            () => OnDecreaseQty(product)
+                        } 
                         src="https://image.flaticon.com/icons/svg/864/864373.svg" style={styles.button_image}></img>
                         
-                        <img src="https://image.flaticon.com/icons/svg/1214/1214428.svg" style={styles.button_image}></img>
+                        <img alt="delete-btn" className="delete-product"
+                        onClick = {
+                            () =>OnDelete(product.id)
+                        }
+                        src="https://image.flaticon.com/icons/svg/1214/1214428.svg" style={styles.button_image}></img>
                     </div>
                     
                 </div>
