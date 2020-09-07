@@ -2,7 +2,7 @@ import React from 'react';
 
 //we (class CartItem) will inherit from a class "Component" inside the "React" package
 
-class CartItem extends React.Component {
+const CartItem = (props) => {
 
     // increaseQuantity = () => {   //arrow func binds the val of this with the instance of this class
         
@@ -61,11 +61,11 @@ class CartItem extends React.Component {
         // this.increaseQuantity = this.increaseQuantity.bind(this);
     // }
 
-    render () {
+    
         // const { price,qty,img_url,title } = this.state;
-        const { price,qty,img_url,title} = this.props.product;
+        const { price,qty,img_url,title} = props.product;
 
-        const {OnIncreaseQty,OnDecreaseQty,OnDelete,product} = this.props;
+        const {OnIncreaseQty,OnDecreaseQty,OnDelete,product} = props;
 
         return (
             <div id="cart-item-container">
@@ -108,7 +108,7 @@ class CartItem extends React.Component {
                 
             </div>
         )
-    }
+    
 }
 
 
