@@ -96,3 +96,14 @@ body {
   height: 30px;
   width: 30px;
 }
+
+#Cart-total>h1{
+  width: 100vw;
+  text-align: center;
+  display:inline-block;
+}
+
+#Cart-total>h1>span{
+  color: blue;
+  font-weight: lighter !important;
+}

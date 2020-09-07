@@ -34,6 +34,9 @@ const Cart = (props) => {
                     </li> */}
 
                 </ul>
+                <div id="Cart-total">
+                <h1 >Total &nbsp; <span>{props.cartTotal}</span></h1>
+                </div>
 
             </div>
         )
@@ -41,3 +44,4 @@ const Cart = (props) => {
 }
 
 export default Cart;
+

@@ -58,6 +58,15 @@ import Navbar from './Navbar';
         return count;
     }
 
+    cartTotal = () => {
+      const {products} = this.state;
+      let total =0;
+      products.forEach(product => {
+        total = total+(product.qty*product.price)
+      });
+      return total;
+    }
+
     
 
   constructor(){
@@ -103,7 +112,9 @@ import Navbar from './Navbar';
     return (
       <div className="App">
         <Navbar cartCount={this.getCartCount()} />
+
         <Cart
+          cartTotal={this.cartTotal()}
           products={products}
           OnIncreaseQty={this.handleIncreaseQty}
           OnDecreaseQty={this.handleDecreaseQty} 
